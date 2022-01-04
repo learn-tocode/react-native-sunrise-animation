@@ -1,0 +1,28 @@
+{
+  "name": "@learn-tocode/react-native-sunrise-animation",
+  "version": "1.0.0",
+  "description": "A sunrise animation similar to Muslim Pro for react native projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/learn-tocode/react-native-sunrise-animation.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "sunrise",
+    "animation",
+    "react-native",
+    "sunrise-animation",
+    "react-native-sunrise-animation"
+  ],
+  "author": "learn-tocode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/learn-tocode/react-native-sunrise-animation/issues"
+  },
+  "homepage": "https://github.com/learn-tocode/react-native-sunrise-animation#readme"
+}
