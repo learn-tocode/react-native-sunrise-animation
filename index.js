@@ -36,7 +36,7 @@ function Sunrise({containerColor, arcStyle, arcColor, semiCircleColor, barColor,
           </Animated.View>
           <View style = {[styles.greenView]}>
             <View style = {[styles.greenFillView]}>
-              <Animated.View style = {[styles.greenFill, {backgroundColor: semiCircleColor}, {height: tempHeight}]} />
+              <Animated.View style = {[styles.greenFill, {backgroundColor: semiCircleColor}, {height: 50}]} />
             </View>
           </View>
           <View style = {[styles.borderBottom, {borderColor: barColor}]} />
