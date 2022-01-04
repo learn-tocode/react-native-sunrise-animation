@@ -23,13 +23,13 @@ defaultImage = {true}
 
 ### Properties for components
 
-| Prop                                 | Description                                                                  | Default                |
-| ------------------------------------ | ---------------------------------------------------------------------------- | ---------------------- |
-| **`arcColor`**                       | The color of the dotted arc.                                                 | `#CCE9E0`              |
-| **`containerColor`**                 | The color of the background view.                                            | `#336B6E`              |
-| **`arcStyle`**                       | The style of arc.                                                            | `dashed`               |
-| **`barColor`**                       | The color of the bottom bar.                                                 | `#CCE9E0`              |
-| **`animationDuration`**              | The duration of the sun and semi circle fill animation.                      | 10000                  |
-| **`semiCircleColor`**                | The color of the semi circle.                                                | `#35B5AB`              |
-| **`defaultImage`**                   | Whether the default image is required or not.                                | true                   |
-| **`imageSource`**                    | The image that is rotating on the arc.                                       | require('./sun.png')   |
+| Prop                                 | Description                                                | Default (`All Required`) |
+| ------------------------------------ | -----------------------------------------------------------| ------------------------ |
+| **`arcColor`**                       | The color of the dotted arc.                               | `#CCE9E0`                |
+| **`containerColor`**                 | The color of the background view.                          | `#336B6E`                |
+| **`arcStyle`**                       | The style of arc.                                          | `dashed`                 |
+| **`barColor`**                       | The color of the bottom bar.                               | `#CCE9E0`                |
+| **`animationDuration`**              | The duration of the sun and semi circle fill animation.    | `10000`                  |
+| **`semiCircleColor`**                | The color of the semi circle.                              | `#35B5AB`                |
+| **`defaultImage`**                   | Whether the default image is required or not.              | `true`                   |
+| **`imageSource`**                    | The image that is rotating on the arc. (Not Required)      | `require('./sun.png')`   |
