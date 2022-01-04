@@ -8,6 +8,8 @@ function Sunrise({miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenVie
   const ballAnimatedValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
+    console.warn(miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenViewStyle, greenFillViewStyle, greenFillStyle, borderBottomStyle, animationDuration, heightFill, imageSource);
+    
     let angleTilt = 180;
 
     ballAnimatedValue.addListener((val) => {
