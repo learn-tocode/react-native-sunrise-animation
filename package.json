@@ -1,6 +1,6 @@
 {
   "name": "@learn-tocode/react-native-sunrise-animation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A sunrise animation similar to Muslim Pro for react native projects.",
   "main": "index.js",
   "scripts": {
