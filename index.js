@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { View, Image, StyleSheet, Dimensions, Animated, Easing } from 'react-native';
 
-function Sunrise({miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenViewStyle, greenFillViewStyle, greenFillStyle, borderBottomStyle, animationDuration, heightFill, imageSource}) {
+function Sunrise({containerColor, arcStyle, arcColor, semiCircleColor, barColor, animationDuration, defaultImage, imageSource}) {
   const [tempDeg, setTempDeg] = useState('0deg');
   const [tempHeight, setTempHeight] = useState(0);
 
@@ -13,35 +13,33 @@ function Sunrise({miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenVie
     ballAnimatedValue.addListener((val) => {
       setTempDeg((angleTilt * val.value) + 'deg');
       let r = ((angleTilt * val.value) * Math.PI)/180;
-      let hei = heightFill != undefined ? heightFill : 117;
-      setTempHeight(hei - (hei * Math.cos(r)));
+      setTempHeight(117 - (117 * Math.cos(r)));
     });
 
     startAnimation();
   }, []);
 
   const startAnimation = () => {
-    let dur = animationDuration != undefined ? animationDuration : 10000;
     Animated.timing(ballAnimatedValue, {
       toValue: 1,
-      duration: dur,
+      duration: animationDuration,
       useNativeDriver: true,
       easing: Easing.linear
     }).start();
   }
 
   return (
-      <View style = {[miniContainerStyle != undefined ? miniContainerStyle : styles.miniContainer]}>
-        <View style = {[arcStyle != undefined ? arcStyle : styles.arc]} />
-          <Animated.View style = {[sunViewStyle != undefined ? sunViewStyle : styles.sunView, {transform: [{rotate: tempDeg}]}]}>
-            <Image style = {[sunStyle != undefined ? sunStyle : styles.sun]} source = {imageSource != undefined ? imageSource : require('./sun.png')} />
+      <View style = {[styles.miniContainer, {backgroundColor: containerColor}]}>
+        <View style = {[styles.arc, {borderStyle: arcStyle, color: arcColor}]} />
+          <Animated.View style = {[styles.sunView, {transform: [{rotate: tempDeg}]}]}>
+            <Image style = {[styles.sun]} source = {defaultImage ? require('./sun.png') : imageSource } />
           </Animated.View>
-          <View style = {[greenViewStyle != undefined ? greenViewStyle : styles.greenView]}>
-            <View style = {[greenFillViewStyle != undefined ? greenFillViewStyle : styles.greenFillView]}>
-              <Animated.View style = {[greenFillStyle != undefined ? greenFillStyle : styles.greenFill, {height: tempHeight}]} />
+          <View style = {[styles.greenView]}>
+            <View style = {[styles.greenFillView]}>
+              <Animated.View style = {[styles.greenFill, {backgroundColor: semiCircleColor}, {height: tempHeight}]} />
             </View>
           </View>
-          <View style = {[borderBottomStyle != undefined ? borderBottomStyle : styles.borderBottom]} />
+          <View style = {[styles.borderBottom, {borderColor: barColor}]} />
       </View>
   );
 }
