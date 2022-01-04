@@ -13,7 +13,8 @@ function Sunrise({miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenVie
     ballAnimatedValue.addListener((val) => {
       setTempDeg((angleTilt * val.value) + 'deg');
       let r = ((angleTilt * val.value) * Math.PI)/180;
-      setTempHeight(heightFill ? heightFill : 0 - (heightFill ? heightFill : 0 * Math.cos(r)));
+      let hei = heightFill ? heightFill : 117;
+      setTempHeight(hei - (hei * Math.cos(r)));
     });
 
     startAnimation();
@@ -29,17 +30,17 @@ function Sunrise({miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenVie
   }
 
   return (
-      <View style = {styles.miniContainer, miniContainerStyle ? miniContainerStyle : null}>
-        <View style = {[styles.arc, arcStyle ? arcStyle : null]} />
-          <Animated.View style = {[styles.sunView, sunViewStyle ? sunViewStyle: null, {transform: [{rotate: tempDeg}]}]}>
-            <Image style = {[styles.sun, sunStyle ? sunStyle : null]} source = {imageSource ? imageSource : require('./sun.png')} />
+      <View style = {[miniContainerStyle ? miniContainerStyle : styles.miniContainer]}>
+        <View style = {[arcStyle ? arcStyle : styles.arc]} />
+          <Animated.View style = {[sunViewStyle ? sunViewStyle : styles.sunView, {transform: [{rotate: tempDeg}]}]}>
+            <Image style = {[sunStyle ? sunStyle : styles.sun]} source = {imageSource ? imageSource : require('./sun.png')} />
           </Animated.View>
-          <View style = {[styles.greenView, greenViewStyle ? greenViewStyle : null]}>
-            <View style = {[styles.greenFillView, greenFillViewStyle ? greenFillViewStyle : null]}>
-              <Animated.View style = {[styles.greenFill, greenFillStyle ? greenFillStyle : null, {height: tempHeight}]} />
+          <View style = {[greenViewStyle ? greenViewStyle : styles.greenView]}>
+            <View style = {[greenFillViewStyle ? greenFillViewStyle : styles.greenFillView]}>
+              <Animated.View style = {[greenFillStyle ? greenFillStyle : styles.greenFill, {height: tempHeight}]} />
             </View>
           </View>
-          <View style = {[styles.borderBottom, borderBottomStyle ? borderBottomStyle : null]} />
+          <View style = {[borderBottomStyle ? borderBottomStyle : styles.borderBottom]} />
       </View>
   );
 }
