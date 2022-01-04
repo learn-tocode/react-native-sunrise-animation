@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/learn-tocode/react-native-sunrise-animation/issues"
   },
-  "homepage": "https://github.com/learn-tocode/react-native-sunrise-animation#readme"
+  "homepage": "https://github.com/learn-tocode/react-native-sunrise-animation#readme",
+  "publishConfig": {
+    "@learn-tocode:registry": "https://npm.pkg.github.com"
+  }
 }
