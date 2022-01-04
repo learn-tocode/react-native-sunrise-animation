@@ -8,14 +8,12 @@ function Sunrise({miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenVie
   const ballAnimatedValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    console.warn(miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenViewStyle, greenFillViewStyle, greenFillStyle, borderBottomStyle, animationDuration, heightFill, imageSource);
-    
     let angleTilt = 180;
 
     ballAnimatedValue.addListener((val) => {
       setTempDeg((angleTilt * val.value) + 'deg');
       let r = ((angleTilt * val.value) * Math.PI)/180;
-      let hei = heightFill ? heightFill : 117;
+      let hei = heightFill != undefined ? heightFill : 117;
       setTempHeight(hei - (hei * Math.cos(r)));
     });
 
@@ -23,26 +21,27 @@ function Sunrise({miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenVie
   }, []);
 
   const startAnimation = () => {
+    let dur = animationDuration != undefined ? animationDuration : 10000;
     Animated.timing(ballAnimatedValue, {
       toValue: 1,
-      duration: animationDuration,
+      duration: dur,
       useNativeDriver: true,
       easing: Easing.linear
     }).start();
   }
 
   return (
-      <View style = {[miniContainerStyle ? miniContainerStyle : styles.miniContainer]}>
-        <View style = {[arcStyle ? arcStyle : styles.arc]} />
-          <Animated.View style = {[sunViewStyle ? sunViewStyle : styles.sunView, {transform: [{rotate: tempDeg}]}]}>
-            <Image style = {[sunStyle ? sunStyle : styles.sun]} source = {imageSource ? imageSource : require('./sun.png')} />
+      <View style = {[miniContainerStyle != undefined ? miniContainerStyle : styles.miniContainer]}>
+        <View style = {[arcStyle != undefined ? arcStyle : styles.arc]} />
+          <Animated.View style = {[sunViewStyle != undefined ? sunViewStyle : styles.sunView, {transform: [{rotate: tempDeg}]}]}>
+            <Image style = {[sunStyle != undefined ? sunStyle : styles.sun]} source = {imageSource != undefined ? imageSource : require('./sun.png')} />
           </Animated.View>
-          <View style = {[greenViewStyle ? greenViewStyle : styles.greenView]}>
-            <View style = {[greenFillViewStyle ? greenFillViewStyle : styles.greenFillView]}>
-              <Animated.View style = {[greenFillStyle ? greenFillStyle : styles.greenFill, {height: tempHeight}]} />
+          <View style = {[greenViewStyle != undefined ? greenViewStyle : styles.greenView]}>
+            <View style = {[greenFillViewStyle != undefined ? greenFillViewStyle : styles.greenFillView]}>
+              <Animated.View style = {[greenFillStyle != undefined ? greenFillStyle : styles.greenFill, {height: tempHeight}]} />
             </View>
           </View>
-          <View style = {[borderBottomStyle ? borderBottomStyle : styles.borderBottom]} />
+          <View style = {[borderBottomStyle != undefined ? borderBottomStyle : styles.borderBottom]} />
       </View>
   );
 }
