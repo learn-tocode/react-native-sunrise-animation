@@ -30,7 +30,7 @@ function Sunrise({containerColor, arcStyle, arcColor, semiCircleColor, barColor,
 
   return (
       <View style = {[styles.miniContainer, {backgroundColor: containerColor}]}>
-        <View style = {[styles.arc, {borderStyle: arcStyle, color: arcColor}]} />
+        <View style = {[styles.arc, {borderStyle: arcStyle, borderColor: arcColor}]} />
           <Animated.View style = {[styles.sunView, {transform: [{rotate: tempDeg}]}]}>
             <Image style = {[styles.sun]} source = {defaultImage ? require('./sun.png') : imageSource } />
           </Animated.View>
