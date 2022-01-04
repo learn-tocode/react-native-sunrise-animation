@@ -13,7 +13,7 @@ function Sunrise({miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenVie
     ballAnimatedValue.addListener((val) => {
       setTempDeg((angleTilt * val.value) + 'deg');
       let r = ((angleTilt * val.value) * Math.PI)/180;
-      setTempHeight(heightFill - (heightFill * Math.cos(r)));
+      setTempHeight(heightFill ? heightFill : 0 - (heightFill ? heightFill : 0 * Math.cos(r)));
     });
 
     startAnimation();
@@ -29,17 +29,17 @@ function Sunrise({miniContainerStyle, arcStyle, sunViewStyle, sunStyle, greenVie
   }
 
   return (
-      <View style = {styles.miniContainer, miniContainerStyle}>
-        <View style = {[styles.arc, arcStyle]} />
-          <Animated.View style = {[styles.sunView, sunViewStyle, {transform: [{rotate: tempDeg}]}]}>
-            <Image style = {[styles.sun, sunStyle]} source = {imageSource} />
+      <View style = {styles.miniContainer, miniContainerStyle ? miniContainerStyle : null}>
+        <View style = {[styles.arc, arcStyle ? arcStyle : null]} />
+          <Animated.View style = {[styles.sunView, sunViewStyle ? sunViewStyle: null, {transform: [{rotate: tempDeg}]}]}>
+            <Image style = {[styles.sun, sunStyle ? sunStyle : null]} source = {imageSource ? imageSource : require('./sun.png')} />
           </Animated.View>
-          <View style = {[styles.greenView, greenViewStyle]}>
-            <View style = {[styles.greenFillView, greenFillViewStyle]}>
-              <Animated.View style = {[styles.greenFill, greenFillStyle, {height: tempHeight}]} />
+          <View style = {[styles.greenView, greenViewStyle ? greenViewStyle : null]}>
+            <View style = {[styles.greenFillView, greenFillViewStyle ? greenFillViewStyle : null]}>
+              <Animated.View style = {[styles.greenFill, greenFillStyle ? greenFillStyle : null, {height: tempHeight}]} />
             </View>
           </View>
-          <View style = {[styles.borderBottom, borderBottomStyle]} />
+          <View style = {[styles.borderBottom, borderBottomStyle ? borderBottomStyle : null]} />
       </View>
   );
 }
